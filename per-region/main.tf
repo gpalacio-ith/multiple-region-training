@@ -26,6 +26,7 @@ module "route-table" {
   source = "../route-table"
   vpc_id = module.vpc.vpc_id
   igw_id = module.internet-gw.igw_id
+  public_subnet_id = module.subnet.public_subnet_id
 }
 
 # Exports VPC ID value to be used by calling module
