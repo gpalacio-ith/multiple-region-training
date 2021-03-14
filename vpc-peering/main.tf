@@ -29,12 +29,14 @@ resource "aws_vpc_peering_connection" "x" {
   peer_region = data.aws_region.accepting.name
   peer_vpc_id = data.aws_vpc.accepting_vpc.id
   vpc_id = data.aws_vpc.requesting_vpc.id
+  tags = merge(local.common_tags, {Name = "gpalacio-requesting-side-peering"})
 }
 
 # Use default provider when creating the peering accepter.
 resource "aws_vpc_peering_connection_accepter" "x" {
   vpc_peering_connection_id = aws_vpc_peering_connection.x.id
   auto_accept = true
+  tags = merge(local.common_tags, {Name = "gpalacio-accepting-side-peering"})
 }
 
 # Add a route to both sides.

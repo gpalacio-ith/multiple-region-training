@@ -3,7 +3,7 @@ variable "cidr" {}
 resource "aws_vpc" "x" {
   cidr_block = var.cidr
   tags = {
-    name = "gpalacio-training-vpc"
+    Name = "gpalacio-training-vpc"
     owner = "gpalacio"
     project = "terraform/multiple-region-training"
   }
