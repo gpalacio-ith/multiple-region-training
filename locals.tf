@@ -6,3 +6,8 @@ locals {
     project = "terraform/multiple-region-training"
   }
 }
+
+# Name of profile in config file
+locals {
+  profile_name = "netops-training-admin"
+}
