@@ -1,4 +1,4 @@
-/.idea/
+.idea/
 
 # Copied from https://github.com/hashicorp/terraform-guides/blob/master/.gitignore
 # Compiled files
@@ -44,3 +44,4 @@ operations/variable-scripts/variable.json
 
 # Sentinel runtime directory
 .sentinel
+/.terraform.lock.hcl
