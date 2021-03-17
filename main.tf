@@ -7,15 +7,15 @@
 #
 # We call the "per-region" module 3 times, each time with a different provider
 # (different AWS region)
-module "us_west_1" {
+module "region-1" {
   source = "./per-region"
-  providers = { aws = aws.us-west-1 }
+  providers = { aws = aws.us-east-1 }
   cidr = var.vpc_cidr
 }
 
-module "us_west_2" {
+module "region-2" {
   source = "./per-region"
-  providers = { aws = aws.us-west-2 }
+  providers = { aws = aws.us-east-2 }
   cidr = var.vpc_cidr
 }
 
@@ -30,10 +30,10 @@ module "us_west_2" {
 # Three connections means three calls to the vpc-peering module.
 module "peering_1" {
   source = "./vpc-peering"
-  accepting_vpc_id = module.us_west_2.vpc_id
-  requesting_vpc_id = module.us_west_1.vpc_id
+  accepting_vpc_id = module.region-2.vpc_id
+  requesting_vpc_id = module.region-1.vpc_id
   providers = {
-    aws = aws.us-west-2                   # Default aws provider for module
-    aws.requesting = aws.us-west-1        # Named/aliased provider for module
+    aws = aws.us-east-2                   # Default aws provider for module
+    aws.requesting = aws.us-east-1        # Named/aliased provider for module
   }
 }

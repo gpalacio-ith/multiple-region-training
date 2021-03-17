@@ -42,6 +42,15 @@ module "nat-gw" {
   nat_gw_subnet = module.subnet.private_subnet_id_1
 }
 
+# Creates one EC2 in each private subnets
+module "instance" {
+  source = "../instance"
+  private_subnets = {
+    1: module.subnet.private_subnet_id_1,
+    2: module.subnet.private_subnet_id_2
+  }
+}
+
 # Exports VPC ID value to be used by calling module
 output "vpc_id" {
   value = module.vpc.vpc_id
