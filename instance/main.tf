@@ -1,5 +1,5 @@
 variable private_subnets {}
-
+variable custom_sg_id {}
 # Obtains from AWS the latests AMI for an ubuntu server image
 data "aws_ami" "ubuntu" {
   most_recent = true
@@ -25,5 +25,6 @@ resource "aws_instance" "example" {
   ami = data.aws_ami.ubuntu.id
   instance_type = "t2.micro"
   subnet_id = each.value
+  security_groups = [var.custom_sg_id]
   tags = local.ec2_tags
 }

@@ -49,6 +49,13 @@ module "instance" {
     1: module.subnet.private_subnet_id_1,
     2: module.subnet.private_subnet_id_2
   }
+  custom_sg_id = module.security-group.sg_id
+}
+
+# Creates one security group with custom rules
+module "security-group" {
+  source = "../sec-group"
+  vpc_id = module.vpc.vpc_id
 }
 
 # Exports VPC ID value to be used by calling module
