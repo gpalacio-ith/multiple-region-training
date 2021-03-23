@@ -1,6 +1,7 @@
 variable "eip_alloc_id" {}
 variable "nat_gw_subnet" {}
 
+# Creates NAT-GW for private subnets
 resource "aws_nat_gateway" "gw" {
   allocation_id = var.eip_alloc_id
   subnet_id     = var.nat_gw_subnet

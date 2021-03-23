@@ -12,7 +12,7 @@ IP addressing is divided as follows:
     * Second /28 is private
     * Third /28 is private
 ---  
-### Comming Soon:
+### Coming Soon:
 * Create subnets in different AZs.
   * one for each AZ available in region
 * Exclusive subnet for NAT GW
