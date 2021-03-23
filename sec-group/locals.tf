@@ -24,12 +24,19 @@ locals {
     3: {
       protocol: "udp"
       direction: "ingress"
-      port: "53"
+      port: "43"
       description: "DNS queries from private space"
       cidr: local.private_ranges
     }
-    # Outbound HTTPS everywhere
     4: {
+      protocol: "udp"
+      direction: "ingress"
+      port: "500"
+      cidr: local.private_ranges
+      description: "IPsec from private space"
+    }
+    # Outbound HTTPS everywhere
+    5: {
       protocol: "tcp"
       direction: "egress"
       port: "443"

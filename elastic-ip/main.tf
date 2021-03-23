@@ -1,6 +1,6 @@
 # Create EIP for NatGW
 resource "aws_eip" "elastic-ip" {
-  vpc         = false
+  vpc         = true
   tags = local.common_tags
 }
 
